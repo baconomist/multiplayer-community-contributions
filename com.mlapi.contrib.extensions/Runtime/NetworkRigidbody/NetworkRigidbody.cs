@@ -100,6 +100,7 @@ public class NetworkRigidbody : NetworkBehaviour
             if (m_InterpolationChangeId != netUpdateId.Value)
             {
                 BeginInterpolation();
+                m_InterpolationTime = 0;
                 m_InterpolationChangeId = netUpdateId.Value;
             }
 
@@ -135,6 +136,8 @@ public class NetworkRigidbody : NetworkBehaviour
                         m_InterpolationState.AngularVelocityDelta * deltaTime;
                 }
             }
+            
+            m_InterpolationTime += Time.fixedDeltaTime;
         }
     }
 
